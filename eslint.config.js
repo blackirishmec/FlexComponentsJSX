@@ -1,16 +1,18 @@
-import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import js from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
+import reactPlugin from 'eslint-plugin-react';
 
-export default defineConfig([
+export default [
+	reactPlugin.configs.recommended, // This is the real set of recommended React lint rules
+
 	js.configs.recommended,
 
 	importPlugin.flatConfigs.recommended,
 	importPlugin.flatConfigs.react,
 
 	{
-		files: ['**/*.{js,mjs,cjs}'],
+		files: ['**/*.{js,jsx,mjs,cjs}'],
 
 		ignores: ['eslint.config.js'],
 
@@ -18,6 +20,7 @@ export default defineConfig([
 			ecmaVersion: 'latest',
 			sourceType: 'module',
 			parserOptions: {
+				project: './jsconfig.json',
 				ecmaFeatures: {
 					jsx: true,
 				},
@@ -126,8 +129,10 @@ export default defineConfig([
 				version: 'detect',
 			},
 			'import/resolver': {
-				node: true,
+				node: {
+					paths: ['src'],
+				},
 			},
 		},
 	},
-]);
+];
