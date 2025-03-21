@@ -3,8 +3,23 @@ import js from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
 
+// Manually convert the old recommended config to a flat config
+const oldReactConfig = reactPlugin.configs.recommended;
+const reactRecommendedAsFlat = {
+	plugins: { react: reactPlugin },
+	rules: {
+		...oldReactConfig.rules,
+	},
+	settings: {
+		...oldReactConfig.settings,
+		react: {
+			version: 'detect',
+		},
+	},
+};
+
 export default [
-	reactPlugin.configs.recommended, // This is the real set of recommended React lint rules
+	reactRecommendedAsFlat,
 
 	js.configs.recommended,
 
@@ -129,8 +144,9 @@ export default [
 				version: 'detect',
 			},
 			'import/resolver': {
-				node: {
-					paths: ['src'],
+				alias: {
+					map: [['@', './src']],
+					extensions: ['.ts', '.js', '.jsx', '.json'],
 				},
 			},
 		},
