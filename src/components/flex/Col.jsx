@@ -5,23 +5,23 @@ import alignItemsMap from '@/utilities/alignItemsMap';
 import justifyContentMap from '@/utilities/justifyContentMap';
 
 /**
- * A flexible row container component that arranges its children horizontally.
+ * A flexible col container component that arranges its children horizontally.
  *
  * @component
  * @param {object} props - The component props
- * @param {React.ReactNode} props.children - The content to be rendered inside the row
+ * @param {React.ReactNode} props.children - The content to be rendered inside the col
  * @param {string} [props.childrenHorizontalPosition] - Horizontal alignment of children ('left'|'center'|'right'|'between'|'around'|'evenly')
  * @param {string} [props.childrenVerticalPosition] - Vertical alignment of children ('top'|'center'|'bottom'|'stretch'|'baseline')
- * @param {string} [props.className] - Additional CSS class names to apply to the row
+ * @param {string} [props.className] - Additional CSS class names to apply to the col
  *
- * @returns {JSX.Element} A div element with flex-row layout and specified alignment properties
+ * @returns {JSX.Element} A div element with flex-col layout and specified alignment properties
  *
  * @example
- * <Row childrenHorizontalPosition="center" childrenVerticalPosition="center">
+ * <Col childrenHorizontalPosition="center" childrenVerticalPosition="center">
  *   <div>Centered content</div>
- * </Row>
+ * </Col>
  */
-export const Row = memo(function Row({
+export const Col = memo(function Col({
 	children,
 	childrenHorizontalPosition,
 	childrenVerticalPosition,
@@ -30,20 +30,21 @@ export const Row = memo(function Row({
 }) {
 	const alignItemsClassName = useMemo(
 		() =>
-			childrenVerticalPosition && alignItemsMap[childrenVerticalPosition],
-		[childrenVerticalPosition],
+			childrenHorizontalPosition &&
+			alignItemsMap[childrenHorizontalPosition],
+		[childrenHorizontalPosition],
 	);
 
 	const justifyContentClassName = useMemo(
 		() =>
-			childrenHorizontalPosition &&
-			justifyContentMap[childrenHorizontalPosition],
-		[childrenHorizontalPosition],
+			childrenVerticalPosition &&
+			justifyContentMap[childrenVerticalPosition],
+		[childrenVerticalPosition],
 	);
 
 	const className = useMemo(
 		() =>
-			`flex flex-row ${justifyContentClassName !== undefined ? ` ${justifyContentClassName}` : ''}${alignItemsClassName !== undefined ? ` ${alignItemsClassName}` : ''}${propClassName && ` ${propClassName}`}`,
+			`flex flex-col ${justifyContentClassName !== undefined ? ` ${justifyContentClassName}` : ''}${alignItemsClassName !== undefined ? ` ${alignItemsClassName}` : ''}${propClassName && ` ${propClassName}`}`,
 		[alignItemsClassName, justifyContentClassName, propClassName],
 	);
 
@@ -54,7 +55,7 @@ export const Row = memo(function Row({
 	);
 });
 
-Row.propTypes = {
+Col.propTypes = {
 	children: PropTypes.node,
 	childrenHorizontalPosition: PropTypes.oneOf([
 		'left',
