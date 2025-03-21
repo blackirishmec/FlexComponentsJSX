@@ -2,10 +2,10 @@
 	"name": "@mike.e.coughlin/flexcomponents-jsx",
 	"version": "1.0.0",
 	"description": "A reusable React component library containing Flexbox layout compatible Row and Col.",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
 	"type": "module",
 	"scripts": {
-		"build": "tsc",
 		"lint": "eslint . --ext .js,.jsx"
 	},
 	"repository": {
