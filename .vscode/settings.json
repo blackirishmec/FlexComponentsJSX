@@ -1,0 +1,19 @@
+{
+	"cSpell.words": [
+		"Flexbox",
+		"flexcomponents"
+	],
+	"editor.formatOnSave": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"prettier.requireConfig": true,
+	"prettier.useEditorConfig": false,
+	"javascript.preferences.importModuleSpecifier": "non-relative",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always"
+	},
+}

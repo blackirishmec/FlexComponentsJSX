@@ -1,0 +1,22 @@
+{
+	"name": "@mike.e.coughlin/flexcomponents-jsx",
+	"version": "1.0.0",
+	"description": "A reusable React component library containing Flexbox layout compatible Row and Col.",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"build": "tsc",
+		"lint": "eslint . --ext .js,.jsx"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/blackirishmec/FlexComponentsJSX.git"
+	},
+	"keywords": ["flexcomponents", "flexcomponents-jsx", "react", "bootstrap", "jsx", "col", "row"],
+	"author": "Michael Coughlin <mike.e.coughlin@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/blackirishmec/FlexComponentsJSX/issues"
+	},
+	"homepage": "https://github.com/blackirishmec/FlexComponentsJSX#readme"
+}
