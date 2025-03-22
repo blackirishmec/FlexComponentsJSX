@@ -3,6 +3,7 @@ import React, { memo, useMemo } from 'react';
 
 import alignItemsMap from '@/utilities/alignItemsMap';
 import justifyContentMap from '@/utilities/justifyContentMap';
+import clsx from 'clsx';
 
 /**
  * A flexible row container component that arranges its children horizontally.
@@ -43,7 +44,13 @@ export const Row = memo(function Row({
 
 	const className = useMemo(
 		() =>
-			`flex flex-row ${justifyContentClassName !== undefined ? ` ${justifyContentClassName}` : ''}${alignItemsClassName !== undefined ? ` ${alignItemsClassName}` : ''}${propClassName && ` ${propClassName}`}`,
+			clsx(
+				'flex flex-row',
+				justifyContentClassName !== undefined &&
+					justifyContentClassName,
+				alignItemsClassName !== undefined && alignItemsClassName,
+				propClassName && propClassName,
+			),
 		[alignItemsClassName, justifyContentClassName, propClassName],
 	);
 

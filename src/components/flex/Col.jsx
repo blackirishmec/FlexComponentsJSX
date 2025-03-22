@@ -3,6 +3,7 @@ import React, { memo, useMemo } from 'react';
 
 import alignItemsMap from '@/utilities/alignItemsMap';
 import justifyContentMap from '@/utilities/justifyContentMap';
+import clsx from 'clsx';
 
 /**
  * A flexible col container component that arranges its children horizontally.
@@ -44,7 +45,13 @@ export const Col = memo(function Col({
 
 	const className = useMemo(
 		() =>
-			`flex flex-col ${justifyContentClassName !== undefined ? ` ${justifyContentClassName}` : ''}${alignItemsClassName !== undefined ? ` ${alignItemsClassName}` : ''}${propClassName && ` ${propClassName}`}`,
+			clsx(
+				'flex flex-col',
+				justifyContentClassName !== undefined &&
+					justifyContentClassName,
+				alignItemsClassName !== undefined && alignItemsClassName,
+				propClassName && propClassName,
+			),
 		[alignItemsClassName, justifyContentClassName, propClassName],
 	);
 
