@@ -6,7 +6,7 @@ import alignItemsMap from '@/utilities/alignItemsMap';
 import justifyContentMap from '@/utilities/justifyContentMap';
 
 /**
- * A flexible col container component that arranges its children vertically.
+ * A flexible col container component.
  *
  * @component
  * @param {object} props - The component props

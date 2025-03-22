@@ -6,7 +6,7 @@ import alignItemsMap from '@/utilities/alignItemsMap';
 import justifyContentMap from '@/utilities/justifyContentMap';
 
 /**
- * A flexible row container component that arranges its children horizontally.
+ * A flexible row container component.
  *
  * @component
  * @param {object} props - The component props
