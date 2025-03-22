@@ -61,3 +61,5 @@ Row.defaultProps = {
 	childrenVerticalPosition: undefined,
 	className: '',
 };
+
+Row.displayName = 'Row';

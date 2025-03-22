@@ -61,3 +61,5 @@ Col.defaultProps = {
 	childrenVerticalPosition: undefined,
 	className: '',
 };
+
+Col.displayName = 'Col';
