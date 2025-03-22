@@ -5,6 +5,12 @@
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		}
+	},
 	"scripts": {
 		"lint": "eslint . --ext .js,.jsx"
 	},
