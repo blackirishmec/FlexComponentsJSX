@@ -11,7 +11,7 @@ import justifyContentMap from '@/utilities/justifyContentMap';
  * @component
  * @param {object} props - The component props
  * @param {React.ReactNode} props.children - The content to be rendered inside the col
- * @param {string} [props.childrenHorizontalPosition] - Horizontal alignment of children ('start'|'center'|'end')
+ * @param {string} [props.childrenHorizontalPosition] - Horizontal alignment of children ('start', 'center', 'end')
  * @param {string} [props.childrenVerticalPosition] - Vertical alignment of children ('start', 'center', 'end')
  * @param {string} [props.className] - Additional CSS class names to apply to the col
  *
