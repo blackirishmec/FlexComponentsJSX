@@ -11,8 +11,8 @@ import justifyContentMap from '@/utilities/justifyContentMap';
  * @component
  * @param {object} props - The component props
  * @param {React.ReactNode} props.children - The content to be rendered inside the col
- * @param {string} [props.childrenHorizontalPosition] - Horizontal alignment of children ('left'|'center'|'right'|'between'|'around'|'evenly')
- * @param {string} [props.childrenVerticalPosition] - Vertical alignment of children ('top'|'center'|'bottom'|'stretch'|'baseline')
+ * @param {string} [props.childrenHorizontalPosition] - Horizontal alignment of children ('start'|'center'|'end')
+ * @param {string} [props.childrenVerticalPosition] - Vertical alignment of children ('start', 'center', 'end')
  * @param {string} [props.className] - Additional CSS class names to apply to the col
  *
  * @returns {JSX.Element} A div element with flex-col layout and specified alignment properties
@@ -37,7 +37,7 @@ export const Col = memo(function Col({
 					justifyContentMap[childrenVerticalPosition],
 				childrenHorizontalPosition &&
 					alignItemsMap[childrenHorizontalPosition],
-				className && className,
+				className,
 			),
 		[childrenHorizontalPosition, childrenVerticalPosition, className],
 	);
@@ -51,21 +51,8 @@ export const Col = memo(function Col({
 
 Col.propTypes = {
 	children: PropTypes.node,
-	childrenHorizontalPosition: PropTypes.oneOf([
-		'left',
-		'center',
-		'right',
-		'between',
-		'around',
-		'evenly',
-	]),
-	childrenVerticalPosition: PropTypes.oneOf([
-		'top',
-		'center',
-		'bottom',
-		'stretch',
-		'baseline',
-	]),
+	childrenHorizontalPosition: PropTypes.oneOf(['start', 'center', 'end']),
+	childrenVerticalPosition: PropTypes.oneOf(['start', 'center', 'end']),
 	className: PropTypes.string,
 };
 
