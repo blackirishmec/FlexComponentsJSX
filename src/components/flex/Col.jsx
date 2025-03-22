@@ -1,12 +1,12 @@
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React, { memo, useMemo } from 'react';
 
 import alignItemsMap from '@/utilities/alignItemsMap';
 import justifyContentMap from '@/utilities/justifyContentMap';
-import clsx from 'clsx';
 
 /**
- * A flexible col container component that arranges its children horizontally.
+ * A flexible col container component that arranges its children vertically.
  *
  * @component
  * @param {object} props - The component props
@@ -26,37 +26,24 @@ export const Col = memo(function Col({
 	children,
 	childrenHorizontalPosition,
 	childrenVerticalPosition,
-	className: propClassName = '',
+	className = '',
 	...props
 }) {
-	const alignItemsClassName = useMemo(
-		() =>
-			childrenHorizontalPosition &&
-			alignItemsMap[childrenHorizontalPosition],
-		[childrenHorizontalPosition],
-	);
-
-	const justifyContentClassName = useMemo(
-		() =>
-			childrenVerticalPosition &&
-			justifyContentMap[childrenVerticalPosition],
-		[childrenVerticalPosition],
-	);
-
-	const className = useMemo(
+	const computedClassName = useMemo(
 		() =>
 			clsx(
 				'flex flex-col',
-				justifyContentClassName !== undefined &&
-					justifyContentClassName,
-				alignItemsClassName !== undefined && alignItemsClassName,
-				propClassName && propClassName,
+				childrenVerticalPosition &&
+					justifyContentMap[childrenVerticalPosition],
+				childrenHorizontalPosition &&
+					alignItemsMap[childrenHorizontalPosition],
+				className && className,
 			),
-		[alignItemsClassName, justifyContentClassName, propClassName],
+		[childrenHorizontalPosition, childrenVerticalPosition, className],
 	);
 
 	return (
-		<div className={className} {...props}>
+		<div className={computedClassName} {...props}>
 			{children}
 		</div>
 	);
@@ -80,4 +67,10 @@ Col.propTypes = {
 		'baseline',
 	]),
 	className: PropTypes.string,
+};
+
+Col.defaultProps = {
+	alignItems: undefined,
+	justifyContent: undefined,
+	className: '',
 };

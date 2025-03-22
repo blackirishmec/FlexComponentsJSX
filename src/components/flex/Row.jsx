@@ -1,9 +1,9 @@
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React, { memo, useMemo } from 'react';
 
 import alignItemsMap from '@/utilities/alignItemsMap';
 import justifyContentMap from '@/utilities/justifyContentMap';
-import clsx from 'clsx';
 
 /**
  * A flexible row container component that arranges its children horizontally.

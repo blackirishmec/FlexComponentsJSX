@@ -2,10 +2,12 @@ import globals from 'globals';
 import js from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
 // Manually convert the old recommended config to a flat config
 const oldReactConfig = reactPlugin.configs.recommended;
 const reactRecommendedAsFlat = {
+	ignores: ['eslint.config.js'],
 	plugins: { react: reactPlugin },
 	rules: {
 		...oldReactConfig.rules,
@@ -18,8 +20,19 @@ const reactRecommendedAsFlat = {
 	},
 };
 
+// Add React Hooks rules
+const reactHooksConfig = {
+	plugins: { 'react-hooks': reactHooksPlugin },
+	rules: {
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'warn', // This is the rule you need
+	},
+};
+
 export default [
 	reactRecommendedAsFlat,
+
+	reactHooksConfig,
 
 	js.configs.recommended,
 
