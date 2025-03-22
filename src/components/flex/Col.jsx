@@ -70,7 +70,7 @@ Col.propTypes = {
 };
 
 Col.defaultProps = {
-	alignItems: undefined,
-	justifyContent: undefined,
+	childrenHorizontalPosition: undefined,
+	childrenVerticalPosition: undefined,
 	className: '',
 };

@@ -7,7 +7,7 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 // Manually convert the old recommended config to a flat config
 const oldReactConfig = reactPlugin.configs.recommended;
 const reactRecommendedAsFlat = {
-	ignores: ['eslint.config.js'],
+	ignores: ['eslint.config.js', './dist/*'],
 	plugins: { react: reactPlugin },
 	rules: {
 		...oldReactConfig.rules,

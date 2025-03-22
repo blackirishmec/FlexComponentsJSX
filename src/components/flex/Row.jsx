@@ -26,36 +26,24 @@ export const Row = memo(function Row({
 	children,
 	childrenHorizontalPosition,
 	childrenVerticalPosition,
-	className: propClassName = '',
+	className = '',
 	...props
 }) {
-	const alignItemsClassName = useMemo(
-		() =>
-			childrenVerticalPosition && alignItemsMap[childrenVerticalPosition],
-		[childrenVerticalPosition],
-	);
-
-	const justifyContentClassName = useMemo(
-		() =>
-			childrenHorizontalPosition &&
-			justifyContentMap[childrenHorizontalPosition],
-		[childrenHorizontalPosition],
-	);
-
-	const className = useMemo(
+	const computedClassName = useMemo(
 		() =>
 			clsx(
 				'flex flex-row',
-				justifyContentClassName !== undefined &&
-					justifyContentClassName,
-				alignItemsClassName !== undefined && alignItemsClassName,
-				propClassName && propClassName,
+				childrenHorizontalPosition &&
+					justifyContentMap[childrenHorizontalPosition],
+				childrenVerticalPosition &&
+					alignItemsMap[childrenVerticalPosition],
+				className && className,
 			),
-		[alignItemsClassName, justifyContentClassName, propClassName],
+		[childrenHorizontalPosition, childrenVerticalPosition, className],
 	);
 
 	return (
-		<div className={className} {...props}>
+		<div className={computedClassName} {...props}>
 			{children}
 		</div>
 	);
@@ -79,4 +67,10 @@ Row.propTypes = {
 		'baseline',
 	]),
 	className: PropTypes.string,
+};
+
+Row.defaultProps = {
+	childrenHorizontalPosition: undefined,
+	childrenVerticalPosition: undefined,
+	className: '',
 };
