@@ -49,15 +49,3 @@ import { Col } from '@mike.e.coughlin/flexcomponents-jsx';
   <div>Centered content</div>
 </Col>
 ```
-
-## Props
-
-Both `Row` and `Col` components accept the following props:
-
-| Prop | Type | Options | Description |
-|------|------|---------|-------------|
-| childrenHorizontalPosition | string | 'start', 'center', 'end' | Horizontal alignment of children |
-| childrenVerticalPosition | string | 'start', 'center', 'end' | Vertical alignment of children |
-| className | string | - | Additional CSS class names |
-
-In addition, all standard HTML div attributes are supported.
