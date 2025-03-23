@@ -141,8 +141,8 @@ export default [
 					devDependencies: [
 						'**/*.test.{js,jsx}',
 						'**/__tests__/**',
-						'**/jest.setup.js',
-						'**/jest.config.js',
+						'**/vitest.setup.js',
+						'**/vitest.config.js',
 						'**/*.stories.{js,jsx}',
 					],
 					optionalDependencies: false,

@@ -14,7 +14,11 @@
 	"scripts": {
 		"build": "vite build",
 		"lint": "eslint . --ext .js,.jsx",
-		"knip": "knip"
+		"knip": "knip",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:ui": "vitest --ui",
+		"test:coverage": "vitest run --coverage"
 	},
 	"repository": {
 		"type": "git",
@@ -37,8 +41,9 @@
 	"homepage": "https://github.com/blackirishmec/FlexComponentsJSX#readme",
 	"devDependencies": {
 		"@eslint/js": "^9.22.0",
+		"@testing-library/jest-dom": "^6.6.3",
 		"@types/node": "^22.13.11",
-		"@vitejs/plugin-react": "^4.3.4",
+		"@vitest/ui": "^3.0.9",
 		"eslint": "^9.22.0",
 		"eslint-config-prettier": "^10.1.1",
 		"eslint-import-resolver-alias": "^1.1.2",
@@ -47,14 +52,18 @@
 		"eslint-plugin-react": "^7.37.4",
 		"eslint-plugin-react-hooks": "^5.2.0",
 		"globals": "^16.0.0",
+		"jsdom": "^26.0.0",
 		"knip": "^5.46.0",
 		"typescript": "^5.8.2",
 		"vite": "^6.2.2"
 	},
 	"dependencies": {
+		"@testing-library/react": "^16.2.0",
+		"@vitejs/plugin-react": "^4.3.4",
 		"clsx": "^2.1.1",
 		"prop-types": "^15.8.1",
 		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react-dom": "^19.0.0",
+		"vitest": "^3.0.9"
 	}
 }
