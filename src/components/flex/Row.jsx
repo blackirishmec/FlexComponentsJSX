@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import React, { memo, useMemo } from 'react';
+import React, { forwardRef, memo, useMemo } from 'react';
 
 import alignItemsMap from '@/utilities/alignItemsMap';
 import justifyContentMap from '@/utilities/justifyContentMap';
@@ -22,32 +22,37 @@ import justifyContentMap from '@/utilities/justifyContentMap';
  *   <div>Centered content</div>
  * </Row>
  */
-export const Row = memo(function Row({
-	children,
-	childrenHorizontalPosition,
-	childrenVerticalPosition,
-	className = '',
-	...props
-}) {
-	const computedClassName = useMemo(
-		() =>
-			clsx(
-				'flex flex-row',
-				childrenHorizontalPosition &&
-					justifyContentMap[childrenHorizontalPosition],
-				childrenVerticalPosition &&
-					alignItemsMap[childrenVerticalPosition],
-				className,
-			),
-		[childrenHorizontalPosition, childrenVerticalPosition, className],
-	);
+export const Row = memo(
+	forwardRef(function Row(
+		{
+			children,
+			childrenHorizontalPosition,
+			childrenVerticalPosition,
+			className = '',
+			...props
+		},
+		ref,
+	) {
+		const computedClassName = useMemo(
+			() =>
+				clsx(
+					'flex flex-row',
+					childrenHorizontalPosition &&
+						justifyContentMap[childrenHorizontalPosition],
+					childrenVerticalPosition &&
+						alignItemsMap[childrenVerticalPosition],
+					className,
+				),
+			[childrenHorizontalPosition, childrenVerticalPosition, className],
+		);
 
-	return (
-		<div className={computedClassName} {...props}>
-			{children}
-		</div>
-	);
-});
+		return (
+			<div ref={ref} className={computedClassName} {...props}>
+				{children}
+			</div>
+		);
+	}),
+);
 
 Row.propTypes = {
 	children: PropTypes.node,
